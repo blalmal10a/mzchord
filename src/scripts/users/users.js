@@ -57,13 +57,15 @@ export default users;
 
 async function getList(props) {
   try {
+    let params = {
+      limit: 15,
+    };
     if (props?.pagination) {
-      songs.pagination = props.pagination;
+      params.limit = props.pagination.rowsPerPage;
+      if (props.pagination.search) params.search = props.pagination.search;
     }
     const res = await api.get(BASEPATH, {
-      params: {
-        limit: users.pagination.rowsPerPage,
-      },
+      params,
     });
     users.list = res.data.data;
     users.pagination.rowsNumber = res.data.total;

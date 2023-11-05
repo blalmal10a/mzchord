@@ -5,24 +5,35 @@
       v-model:pagination="users.pagination"
       @request="users.getList"
       :columns="users.columns"
+      :filter="users.pagination.search"
     >
       <template v-slot:top>
-        <div class="row full-width">
-          <div class="col">
+        <div class="full-width">
+          <div class="row justify-between  q-col-gutter-sm">
+            <div class="col-auto">
+              <q-input
+                dense
+                outlined
+                debounce="500"
+                label="Search "
+                style="min-width: min(300px, 90vw);"
+                v-model="users.pagination.search"
+              ></q-input>
+            </div>
+            <div class="col-auto">
+              <q-btn
+                label="add"
+                icon="add"
+                color="primary"
+                :to="{
+                  name: 'song-form',
+                  params: {
+                    id: 'add',
+                  }
+                }"
+              ></q-btn>
+            </div>
 
-          </div>
-          <div class="col-auto">
-            <q-btn
-              label="add"
-              icon="add"
-              color="primary"
-              :to="{
-                name: 'user-form',
-                params: {
-                  id: 'add',
-                }
-              }"
-            ></q-btn>
           </div>
 
         </div>

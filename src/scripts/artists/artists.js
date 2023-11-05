@@ -65,12 +65,9 @@ export default artists;
 
 async function getList(props) {
   try {
-    let params = { ...artists.pagination };
+    let params = { limit: artists.pagination.limit };
     if (props?.pagination) {
-      params = {
-        limit: props.pagination.rowsPerPage,
-      };
-
+      params.limit = props.pagination.rowsPerPage;
       if (props.pagination?.search) params.search = props.pagination.search;
     }
 
@@ -93,11 +90,6 @@ async function onSubmit() {
     detail.socials.forEach((social, i) => {
       if (!social.link) social.link = "N/A";
     });
-    // for await (let i of Object.keys(detail.socials)) {
-    //   const social = detail.socials[i];
-
-    //   if (!social.link) detail.socials.splice(i, 1);
-    // }
 
     const res = await api[method](url, detail);
     router.push({ name: "artists" });

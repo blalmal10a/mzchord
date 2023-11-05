@@ -49,6 +49,7 @@
           v-model="songs.detail.lyric"
           type="text"
           label="Lyrics"
+          class="lyrics-input"
           autogrow
         />
       </q-card>
@@ -104,5 +105,12 @@ onBeforeUnmount(() => {
     featuring: null,
     lyric: "",
   }
-})
+});
 </script>
+<style lang="scss">
+.lyrics-input {
+  textarea {
+    min-height: 300px !important;
+  }
+}
+</style>
