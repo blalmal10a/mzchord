@@ -1,3 +1,4 @@
+import { Notify } from "quasar";
 import axios, { api } from "src/boot/axios";
 import v from "src/scripts/v";
 import { computed, reactive, ref } from "vue";
@@ -5,8 +6,8 @@ import { computed, reactive, ref } from "vue";
 const auth = reactive({
   user: {
     name: "",
-    email: "frankie@tilte.com",
-    password: "password",
+    email: "",
+    password: "",
     confirm_password: "",
   },
   loadingLogin: false,
@@ -29,6 +30,7 @@ async function logout() {
     v.router.push({ name: "login" });
     // if (!auth.state) v.router.push({ name: "login" });
   } catch (error) {
+    v.router.push({ name: "login" });
     console.error(error.message);
   }
 
@@ -66,6 +68,7 @@ async function login() {
     console.error(error.message);
     auth.loadingLogin = false;
     auth.state = false;
+    Notify.create(error.response?.data?.message ?? error.message);
     // console.log("q is: ", q);
     // q.notify(error.response?.data?.message ?? error.message);
   }
@@ -85,6 +88,7 @@ async function onRegister() {
     v.router.push({ name: "login" });
 
     console.error(error.message);
+    Notify.create(error.response?.data?.message ?? error.message);
   }
 }
 export { auth };
