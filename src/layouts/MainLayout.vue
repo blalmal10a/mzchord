@@ -76,7 +76,7 @@
         <q-item-section side>
           <q-img
             style="width: 100px; border-radius: 50%;"
-            src="src/assets/images/ic-music-note.jpeg"
+            src="~/assets/images/ic-music-note.jpeg"
           ></q-img>
         </q-item-section>
         <q-item-section style="font-size: 27px;">
