@@ -23,7 +23,7 @@
                 dense
                 outlined
                 label="Filter by difficulty"
-                :options="['Beginner', 'Intermediate', 'Advance']"
+                :options="['Beginner', 'Intermediate', 'Advanced']"
                 style="width: min(250px, 90vw);"
                 @update:model-value="(val) => {
                   chords.getList({

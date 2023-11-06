@@ -57,7 +57,7 @@ async function getList(props) {
       params.limit = props.pagination.rowsPerPage;
       // if (props.pagination.search) params.search = props.pagination.search;
       if (props.pagination.search)
-        params[`level[eq]`] = props.pagination.search;
+        params[`difficulty[eq]`] = props.pagination.search;
 
       console.log(params);
     }

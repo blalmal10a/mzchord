@@ -6,7 +6,7 @@
         bordered
         class="q-pa-md"
       >
-        <div class="row q-col-gutter-sm">
+        <div class="row reverse-wrap q-col-gutter-sm">
 
           <div class="col-12 col-sm-6 col-lg-4">
             <q-select
@@ -30,21 +30,63 @@
               option-value="_id"
               option-label="title"
               :options="[songs.detail]"
-            ></q-select>
-
-          </div>
-          <div class="col-12">
-            <q-input
-              autogrow
-              outlined
-              label="Chord data"
-              class="chord-data"
-              v-model="chords.detail.data"
             >
+            </q-select>
 
-            </q-input>
           </div>
 
+          <div class="col-12 col-sm-6 col-lg-4">
+            <q-item
+              dense
+              class="text-grey-8"
+              style="height: 40px; border: 1px solid #afafaf; border-radius: 4px; ;"
+              tag="label"
+            >
+              <q-item-section>
+                <q-radio
+                  color="orange"
+                  v-model="chords.detail.isDraft"
+                  :val="true"
+                  label="Draft"
+                  checked-icon="history_edu"
+                  unchecked-icon="history_edu"
+                ></q-radio>
+              </q-item-section>
+            </q-item>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-4">
+            <q-item
+              dense
+              class="text-grey-8"
+              tag="label"
+              style="height: 40px; border: 1px solid #afafaf; border-radius: 4px; ;"
+            >
+              <q-item-section>
+                <q-radio
+                  v-model="chords.detail.isDraft"
+                  :val="false"
+                  color="green"
+                  label="Publish"
+                  checked-icon="library_add_check"
+                  unchecked-icon="library_add_check"
+                ></q-radio>
+              </q-item-section>
+            </q-item>
+          </div>
+
+        </div>
+
+        <div class="q-mt-md">
+          <q-input
+            autogrow
+            outlined
+            label="Chord data"
+            class="chord-data"
+            v-model="chords.detail.data"
+          >
+
+          </q-input>
         </div>
       </q-card>
       <div
