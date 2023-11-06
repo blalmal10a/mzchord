@@ -1,6 +1,7 @@
 import { api } from "src/boot/axios";
 import r3 from "../r3";
 import showConfirmDeleteDialog from "../show-confirm-delete-dialog";
+import { Notify } from "quasar";
 
 async function onConfirmDelete() {
   try {
@@ -12,6 +13,7 @@ async function onConfirmDelete() {
   } catch (error) {
     r3.loadingDelete = false;
     console.error(error.message);
+    Notify.create(error.response?.data?.message ?? "Server error");
   }
 }
 

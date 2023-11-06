@@ -1,6 +1,7 @@
 import { api } from "src/boot/axios";
 import { reactive } from "vue";
 import v from "../v";
+import { Notify } from "quasar";
 
 const BASEPATH = "artist";
 const artists = reactive({
@@ -65,9 +66,13 @@ export default artists;
 
 async function getList(props) {
   try {
-    let params = { limit: artists.pagination.limit };
+    let params = {
+      limit: artists.pagination.limit,
+      page: artists.pagination.page,
+    };
     if (props?.pagination) {
       params.limit = props.pagination.rowsPerPage;
+      params.page = props.pagination.page;
       if (props.pagination?.search) params.search = props.pagination.search;
     }
 
@@ -78,6 +83,7 @@ async function getList(props) {
     artists.pagination.rowsNumber = res.data.total;
   } catch (error) {
     console.error(error.message);
+    Notify.create(error.response?.data?.message ?? "Server error");
   }
 }
 
@@ -95,6 +101,7 @@ async function onSubmit() {
     router.push({ name: "artists" });
   } catch (error) {
     console.error(error.message);
+    Notify.create(error.response?.data?.message ?? "Server error");
   }
 }
 
@@ -107,5 +114,6 @@ async function getDetail() {
     q.loading.hide();
   } catch (error) {
     q.loading.hide();
+    Notify.create(error.response?.data?.message ?? "Server error");
   }
 }

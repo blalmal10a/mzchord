@@ -7,25 +7,51 @@
       :columns="chords.columns"
     >
       <template v-slot:top>
-        <div class="row full-width">
-          <div class="col">
+        <div class="full-width">
+          <div class="row  justify-end q-col-gutter-md">
+            <div
+              class="col-12"
+              style="font-size: 17px;"
+            >
+              <span
+                class="text-bold"
+                style="font-size: 22px;"
+              >TITLE OF SONG: `{{ chords.list?.[0]?.song?.title }}`</span>
+            </div>
+            <div class="col">
+              <q-select
+                dense
+                outlined
+                label="Filter by difficulty"
+                :options="['Beginner', 'Intermediate', 'Advance']"
+                style="width: min(250px, 90vw);"
+                @update:model-value="(val) => {
+                  chords.getList({
+                    pagination: {
+                      ...chords.pagination,
+                      search: val
+                    }
+                  })
+                }"
+                v-model="chords.pagination.search"
+              ></q-select>
+            </div>
+            <div class="col-auto">
+              <q-btn
+                label="add chord"
+                icon="add"
+                color="primary"
+                :to="{
+                  name: 'chord-form',
+                  params: {
+                    songId: $route.params.id,
+                    id: 'add',
+                  }
+                }"
+              ></q-btn>
+            </div>
 
           </div>
-          <div class="col-auto">
-            <q-btn
-              label="add"
-              icon="add"
-              color="primary"
-              :to="{
-                name: 'chord-form',
-                params: {
-                  songId: $route.params.id,
-                  id: 'add',
-                }
-              }"
-            ></q-btn>
-          </div>
-
         </div>
 
       </template>

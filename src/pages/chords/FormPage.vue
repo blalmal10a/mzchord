@@ -14,7 +14,7 @@
               outlined
               label="Difficulty"
               v-model="chords.detail.difficulty"
-              :options="['Beginner', 'Intermediate', 'Advance']"
+              :options="['Beginner', 'Intermediate', 'Advanced']"
             ></q-select>
           </div>
 
@@ -35,8 +35,10 @@
           </div>
           <div class="col-12">
             <q-input
+              autogrow
               outlined
               label="Chord data"
+              class="chord-data"
               v-model="chords.detail.data"
             >
 
@@ -91,10 +93,8 @@ onMounted(async () => {
   const { q, route, router } = v;
   if (route.params.id != 'add')
     chords.getDetail()
-  if (!songs.detail._id) {
-    await songs.getDetail(null, route.params.songId)
-    chords.detail.song = route.params.songId
-  }
+  await songs.getDetail(null, route.params.songId)
+  chords.detail.song = songs.detail._id
 });
 onBeforeUnmount(() => {
   chords.detail = {
@@ -107,3 +107,11 @@ onBeforeUnmount(() => {
 });
 
 </script>
+
+<style lang="scss">
+.chord-data {
+  textarea {
+    min-height: 300px !important;
+  }
+}
+</style>

@@ -47,12 +47,14 @@ export default songs;
 
 async function getList(props) {
   try {
-    if (props?.pagination) {
-      songs.pagination = props.pagination;
-    }
     let params = {
       limit: songs.pagination.rowsPerPage,
+      page: songs.pagination.page,
     };
+    if (props?.pagination) {
+      params.limit = props.pagination.rowsPerPage;
+      params.page = props.pagination.page;
+    }
     if (songs.pagination.search) {
       params.search = songs.pagination.search;
     }
@@ -63,6 +65,7 @@ async function getList(props) {
     songs.pagination.rowsNumber = res.data.total;
   } catch (error) {
     console.error(error.message);
+    Notify.create(error.response?.data?.message ?? "Server error");
   }
 }
 
@@ -76,6 +79,7 @@ async function onSubmit() {
     router.push({ name: "songs" });
   } catch (error) {
     console.error(error.message);
+    Notify.create(error.response?.data?.message ?? "Server error");
   }
 }
 
@@ -88,20 +92,25 @@ async function getDetail(ev, id) {
     q.loading.hide();
   } catch (error) {
     q.loading.hide();
+    Notify.create(error.response?.data?.message ?? "Server error");
   }
 }
 
 async function onFilterArtist(data, update) {
   update(() => {
-    if (data.length < 2) {
-      artists.getList();
-    } else {
-      artists.getList({
-        pagination: {
-          limit: 20,
-          search: data,
-        },
-      });
+    try {
+      if (data.length < 2) {
+        artists.getList();
+      } else {
+        artists.getList({
+          pagination: {
+            limit: 20,
+            search: data,
+          },
+        });
+      }
+    } catch (error) {
+      Notify.create(error.response?.data?.message ?? "Server error");
     }
   });
 }

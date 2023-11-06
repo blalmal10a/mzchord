@@ -1,8 +1,9 @@
 import { api } from "src/boot/axios";
 import { reactive } from "vue";
 import v from "../v";
+import { Notify } from "quasar";
 
-const BASEPATH = "song";
+const BASEPATH = "chord";
 const chords = reactive({
   list: [],
   detail: {
@@ -14,6 +15,7 @@ const chords = reactive({
   },
 
   pagination: {
+    rowsPerPage: 15,
     rowsNumber: 0,
   },
   getList: getList,
@@ -21,15 +23,9 @@ const chords = reactive({
   onSubmit: onSubmit,
   columns: [
     {
-      label: "Name",
-      name: "name",
-      field: (row) => row.name,
-      align: "left",
-    },
-    {
-      label: "Gender",
-      name: "sex",
-      field: (row) => row.sex,
+      label: "Difficulty",
+      name: "difficulty",
+      field: (row) => row.difficulty,
       align: "left",
     },
     {
@@ -50,20 +46,29 @@ export default chords;
 
 async function getList(props) {
   try {
+    // console.log(props?.pagination);
     const { q, route, router } = v;
-
+    let params = {
+      page: chords.pagination.page,
+      limit: chords.pagination.rowsPerPage,
+    };
     if (props?.pagination) {
-      songs.pagination = props.pagination;
+      params.page = props.pagination.page;
+      params.limit = props.pagination.rowsPerPage;
+      // if (props.pagination.search) params.search = props.pagination.search;
+      if (props.pagination.search)
+        params[`level[eq]`] = props.pagination.search;
+
+      console.log(params);
     }
     const res = await api.get(`song/${v.route.params.songId}/chord`, {
-      params: {
-        limit: chords.pagination.rowsPerPage,
-      },
+      params,
     });
     chords.list = res.data.data;
     chords.pagination.rowsNumber = res.data.total;
   } catch (error) {
     console.error(error.message);
+    Notify.create(error.response?.data?.message ?? "Server error");
   }
 }
 
@@ -73,19 +78,19 @@ async function onSubmit() {
     const { detail } = chords;
 
     const url = detail._id
-      ? `${BASEPATH}/${route.params.songId}/chord/${detail._id}`
-      : `${BASEPATH}/${route.params.songId}/chord`;
+      ? `${BASEPATH}/${detail._id}`
+      : `song/${route.params.songId}/chord`;
     const method = detail._id ? "put" : "post";
 
-    // for await (let i of Object.keys(detail.socials)) {
-    //   const social = detail.socials[i];
-
-    //   if (!social.link) detail.socials.splice(i, 1);
-    // }
-
     const res = await api[method](url, detail);
-    router.push({ name: "chords" });
+    router.push({
+      name: "song-chords",
+      params: {
+        songId: route.params.songId,
+      },
+    });
   } catch (error) {
+    Notify.create(error.response?.data?.message ?? "Server error");
     console.error(error.message);
   }
 }
@@ -99,5 +104,6 @@ async function getDetail() {
     q.loading.hide();
   } catch (error) {
     q.loading.hide();
+    Notify.create(error.response?.data?.message ?? "Server error");
   }
 }

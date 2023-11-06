@@ -14,6 +14,7 @@ const users = reactive({
   },
 
   pagination: {
+    rowsPerPage: 15,
     rowsNumber: 0,
   },
   getList: getList,
@@ -58,10 +59,12 @@ export default users;
 async function getList(props) {
   try {
     let params = {
-      limit: 15,
+      limit: users.pagination.rowsPerPage,
+      page: users.pagination.page,
     };
     if (props?.pagination) {
       params.limit = props.pagination.rowsPerPage;
+      params.page = props.pagination.page;
       if (props.pagination.search) params.search = props.pagination.search;
     }
     const res = await api.get(BASEPATH, {

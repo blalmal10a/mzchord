@@ -78,6 +78,13 @@ const routes = [
         name: "song-chords",
         meta: {
           title: "Chords",
+          active: "songs",
+          ancestors: [
+            {
+              name: "songs",
+              title: "Songs",
+            },
+          ],
           hidden: true,
         },
         component: () => import("pages/chords/ListPage.vue"),
@@ -88,6 +95,13 @@ const routes = [
         meta: {
           title: "Chords",
           hidden: true,
+          active: "songs",
+          ancestors: [
+            {
+              name: "songs",
+              title: "Songs",
+            },
+          ],
         },
         component: () => import("src/pages/chords/FormPage.vue"),
       },
