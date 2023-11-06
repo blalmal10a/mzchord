@@ -67,12 +67,12 @@ module.exports = configure(function (ctx) {
           ? //DEVELOPMENT
             "http://localhost:8000/api/v1"
           : //PRODUCTOIN
-            "/api",
+            "https://mzchord.vercel.app/api/v1",
         SERVER_URL: ctx.dev
           ? //dev
             "http://localhost:8000/"
           : //production
-            "/",
+            "https://mzchord.vercel.app/",
       },
       // rawDefine: {}
       // ignorePublicFolder: true,
