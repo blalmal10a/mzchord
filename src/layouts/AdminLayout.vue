@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <!-- <q-header elevated>
+    <q-header elevated>
       <q-toolbar>
         <q-btn
           flat
@@ -49,18 +49,21 @@
               'text-white': $route.name != item.name,
             }"
           >
+            <!--  -->
+          </q-breadcrumbs-el>
+        </template>
+        <q-breadcrumbs-el
+          :label="$route.meta?.title"
+          class="cursor-pointer text-secondary"
+        >
+        </q-breadcrumbs-el>
+        <!-- <template v-if="!$route.meta?.ancestors?.length">
 
-    </q-breadcrumbs-el>
-  </template>
-  <q-breadcrumbs-el
-    :label="$route.meta?.title"
-    class="cursor-pointer text-secondary"
-  >
-  </q-breadcrumbs-el>
-  </q-breadcrumbs>
-  </q-header> -->
+        </template> -->
+      </q-breadcrumbs>
+    </q-header>
 
-    <!-- <q-drawer
+    <q-drawer
       v-model="leftDrawerOpen"
       show-if-above
       bordered
@@ -85,7 +88,7 @@
         <drawer-item-list />
 
       </q-list>
-    </q-drawer> -->
+    </q-drawer>
 
     <q-page-container>
       <router-view />

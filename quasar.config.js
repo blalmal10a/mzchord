@@ -53,20 +53,22 @@ module.exports = configure(function (ctx) {
         node: "node16",
       },
 
-      vueRouterMode: "hash", // available values: 'hash', 'history'
+      vueRouterMode: "history", // available values: 'hash', 'history'
+      distDir: "dist/admin",
       // vueRouterBase,
       // vueDevtools,
       // vueOptionsAPI: false,
 
       // rebuildCache: true, // rebuilds Vite/linter/etc cache on startup
 
-      // publicPath: '/',
+      publicPath: "/admin",
       // analyze: true,
       env: {
         API_URL: ctx.dev
           ? //DEVELOPMENT
             "http://localhost:8000/api/v1"
           : //PRODUCTOIN
+            // "http://localhost:8000/api/v1",
             "https://mzchord.vercel.app/api/v1",
         SERVER_URL: ctx.dev
           ? //dev

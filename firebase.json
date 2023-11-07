@@ -1,12 +1,12 @@
 {
   "hosting": {
     "site": "mzchord",
-    "public": "dist/spa",
+    "public": "dist",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
-        "source": "**",
-        "destination": "/index.html"
+        "source": "/admin/**",
+        "destination": "/admin/index.html"
       }
     ]
   }

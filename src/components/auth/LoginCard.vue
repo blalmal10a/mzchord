@@ -15,8 +15,9 @@
         <q-separator spaced></q-separator>
 
         <q-input
-          class="q-mt-md"
           dense
+          autofocus
+          class="q-mt-md"
           v-model="user.email"
           type="email"
           label="email"

@@ -39,8 +39,10 @@ export default route(function (/* { store, ssrContext } */) {
       await auth.getUser();
     }
     if (to.meta.unguarded) {
-      console.log("going here", auth.state);
-      if (auth.state && auth.user) next("/");
+      if (auth.state && auth.user)
+        next({
+          name: "dashboard",
+        });
       else next();
     } else {
       if (auth.state && auth.user) next();

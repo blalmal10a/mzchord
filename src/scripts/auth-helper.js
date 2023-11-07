@@ -82,11 +82,14 @@ async function confirmEmail() {
 
 async function onRegister() {
   try {
+    auth.loadingLogin.value = true;
     const res = await api.post(`auth/register`, auth.user);
     v.router.push({ name: "login" });
+    auth.loadingLogin.value = false;
   } catch (error) {
-    v.router.push({ name: "login" });
+    auth.loadingLogin.value = false;
 
+    v.router.push({ name: "login" });
     console.error(error.message);
     Notify.create(error.response?.data?.message ?? error.message);
   }

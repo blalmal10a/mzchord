@@ -1,9 +1,27 @@
 const routes = [
+  // {
+  //   path: "/",
+  //   component: () => import("layouts/MainLayout.vue"),
+  //   children: [
+  //     {
+  //       path: "",
+  //       name: "home",
+  //       meta: {
+  //         unguarded: true,
+  //       },
+  //       component: () => import("pages/IndexPage.vue"),
+  //     },
+  //   ],
+  // },
   {
     path: "/",
-    component: () => import("layouts/MainLayout.vue"),
+    component: () => import("layouts/AdminLayout.vue"),
     children: [
-      { path: "", component: () => import("pages/IndexPage.vue") },
+      {
+        path: "",
+        name: "dashboard",
+        component: () => import("pages/dashboard/DashboardPage.vue"),
+      },
       {
         path: "songs",
         name: "songs",
