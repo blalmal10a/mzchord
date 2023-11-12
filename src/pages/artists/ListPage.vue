@@ -26,7 +26,7 @@
                 icon="add"
                 color="primary"
                 :to="{
-                  name: 'song-form',
+                  name: 'artist-form',
                   params: {
                     id: 'add',
                   }

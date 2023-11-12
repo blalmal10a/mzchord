@@ -54,7 +54,8 @@ module.exports = configure(function (ctx) {
       },
 
       vueRouterMode: "history", // available values: 'hash', 'history'
-      distDir: "dist/admin",
+      distDir: "../astro-mzchord/dist/admin",
+      // distDir: "dist/admin",
       // vueRouterBase,
       // vueDevtools,
       // vueOptionsAPI: false,
