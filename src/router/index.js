@@ -45,8 +45,10 @@ export default route(function (/* { store, ssrContext } */) {
         });
       else next();
     } else {
-      if (auth.state && auth.user) next();
-      else next({ name: "login" });
+      if (auth.state && auth.user) {
+        if (auth.user?.role == "admin") next();
+        else window.location = "/";
+      } else next({ name: "login" });
     }
 
     return;
