@@ -44,7 +44,9 @@ async function getUser() {
       //   Authorization: `Bearer ${localStorage.getItem("token")}`,
       // },
     });
+    auth.user = res.data;
     auth.state = true;
+    return res.data;
   } catch (error) {
     return true;
     // console.error(error.message);
@@ -56,14 +58,16 @@ async function getUser() {
 async function login() {
   try {
     auth.loadingLogin = true;
-    const res = await api.post("auth/login", {
+    await api.post("auth/login", {
       ...auth.user,
     });
-    const token = res.data.token;
+
+    // const res = await api.get("auth/me");
+    // auth.user = res.data;
+
     auth.state = true;
-    // router.push("/");
-    auth.loadingLogin = false;
     v.router.push("/");
+    auth.loadingLogin = false;
   } catch (error) {
     console.error(error.message);
     auth.loadingLogin = false;

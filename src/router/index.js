@@ -35,19 +35,25 @@ export default route(function (/* { store, ssrContext } */) {
   });
 
   Router.beforeEach(async (to, from, next) => {
-    if (!auth.state || !auth.user) {
+    if (!auth.state || !auth.user?._id) {
       await auth.getUser();
     }
+
     if (to.meta.unguarded) {
-      if (auth.state && auth.user)
+      if (auth.state && auth.user?._id)
         next({
           name: "dashboard",
         });
       else next();
     } else {
-      if (auth.state && auth.user) {
-        if (auth.user?.role == "admin") next();
-        else window.location = "/";
+      if (auth.state && auth.user?._id) {
+        if (auth.user.role == "admin") {
+          next();
+        } else {
+          const redirect =
+            process.env.NODE_ENV == "development" ? "/unauthorized" : "/";
+          window.location = redirect;
+        }
       } else next({ name: "login" });
     }
 
