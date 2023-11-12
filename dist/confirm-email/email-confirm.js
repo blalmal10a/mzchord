@@ -31,9 +31,10 @@ async function onConfirmEmail() {
       `${baseUrl}/api/v1/auth/confirm-email?token=${token}`,
       options
     );
-    setTimeout(() => {
-      window.location = "/";
-    }, 1500);
+    console.log(res.data);
+    // setTimeout(() => {
+    //   window.location = "/";
+    // }, 1500);
   } catch (error) {
     alert(
       "ERROR: THERE WAS AN ERROR CONFIRMING YOUR EMAIL. PLASE CONTACT ZO CHORD"
