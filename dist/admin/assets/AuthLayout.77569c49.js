@@ -1,0 +1,1 @@
+import{u as r,a as s,b as u}from"./use-quasar.4cbc4a09.js";import{W as e,X as n,Y as _,Z as c,I as l,J as p,K as t,L as a}from"./index.1fb80485.js";const h={__name:"AuthLayout",setup(i){return e.q=r(),e.route=n(),e.router=_(),(m,f)=>{const o=c("router-view");return l(),p(s,{view:"lHh Lpr lFf"},{default:t(()=>[a(u,null,{default:t(()=>[a(o)]),_:1})]),_:1})}}};export{h as default};
