@@ -24,7 +24,9 @@ async function onConfirmEmail() {
       },
       // body: JSON.stringify(data), // body data type must match "Content-Type" header
     };
-    const baseUrl = isDev ? "http://localhost:8000" : `/admin`;
+    const baseUrl = isDev
+      ? "http://localhost:8000"
+      : `https://mzchord.vercel.app`;
 
     console.log("base url is: ", baseUrl);
     const res = await fetch(
