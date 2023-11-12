@@ -20,6 +20,9 @@ const routes = [
       {
         path: "",
         name: "dashboard",
+        meta: {
+          title: "Dashboard",
+        },
         component: () => import("pages/dashboard/DashboardPage.vue"),
       },
       {
