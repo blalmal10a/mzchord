@@ -1,15 +1,12 @@
 <template>
-  <q-page
-    class=""
-    padding
-  >
+  <q-page class="q-pa-lg">
 
 
     <div
       class="row q-col-gutter-md text-center"
       style="font-size: min(15vw, 15vh);"
     >
-      <div class="col-12 col-sm-6 col-lg-4 ">
+      <div class="col-12 col-sm-6 col-xl-3 ">
         <q-card>
           <q-card-section class="q-py-none">
             {{ statisticData.totalPublishedChords ?? 0 }}
@@ -23,7 +20,7 @@
         </q-card>
       </div>
 
-      <div class="col-12 col-sm-6 col-lg-4 ">
+      <div class="col-12 col-sm-6 col-xl-3 ">
         <q-card>
           <q-card-section class="q-py-none">
             {{ statisticData.totalSongs ?? 0 }}
@@ -36,7 +33,7 @@
           </q-card-section>
         </q-card>
       </div>
-      <div class="col-12 col-sm-6 col-lg-4 ">
+      <div class="col-12 col-sm-6 col-xl-3 ">
         <q-card>
           <q-card-section class="q-py-none">
             {{ statisticData.totalArtists ?? 0 }}
@@ -50,7 +47,7 @@
         </q-card>
       </div>
 
-      <div class="col-12 col-sm-6 col-lg-4 ">
+      <div class="col-12 col-sm-6 col-xl-3 ">
         <q-card>
           <q-card-section class="q-py-none">
             {{ statisticData.totalUsers ?? 0 }}
