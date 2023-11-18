@@ -140,7 +140,7 @@ onMounted(async () => {
 
   await songs.getDetail(null, route.params.songId)
   chords.detail.song = songs.detail._id
-  console.log('songs is: ', songs)
+
   if (route.params.id == 'add')
     chords.detail.data = songs.detail?.lyric
 });
