@@ -124,10 +124,6 @@
         </div>
       </div>
     </q-form>
-
-    <pre>
-      {{ chords.detail.socials }}
-    </pre>
   </q-page>
 </template>
 <script setup>
@@ -141,8 +137,11 @@ onMounted(async () => {
   const { q, route, router } = v;
   if (route.params.id != 'add')
     chords.getDetail()
+
   await songs.getDetail(null, route.params.songId)
   chords.detail.song = songs.detail._id
+  if (route.params.id == 'add')
+    chords.detail.data = songs.detail.lyric
 });
 onBeforeUnmount(() => {
   chords.detail = {
