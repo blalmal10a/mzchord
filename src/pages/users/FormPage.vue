@@ -35,6 +35,17 @@
             <q-input
               outlined
               dense
+              no-error-icon
+              v-model="users.detail.picture"
+              :error="password_error"
+              hint=""
+              label="Profile Picture URL"
+            ></q-input>
+          </div>
+          <div class="col-12 col-sm-6 col-lg-4">
+            <q-input
+              outlined
+              dense
               type="password"
               no-error-icon
               v-model="users.detail.password"
