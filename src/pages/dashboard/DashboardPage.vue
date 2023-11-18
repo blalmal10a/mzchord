@@ -64,12 +64,6 @@
         </q-card>
       </div>
     </div>
-
-
-    <!-- </q-card> -->
-    <pre>
-  {{ statisticData }}
-</pre>
   </q-page>
 </template>
 
