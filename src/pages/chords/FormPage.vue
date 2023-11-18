@@ -6,33 +6,32 @@
         bordered
         class="q-pa-md"
       >
-        <div class="row reverse-wrap q-col-gutter-sm">
-
+        <div class="row q-mt-none q-mb-md">
+          "
+          <span class="text-h5 text-italic">
+            {{ songs.detail?.title }}
+          </span>
+          " <span class="self-end">- {{ songs.detail.artist?.name }}</span>
+        </div>
+        <div class="row  q-col-gutter-sm">
           <div class="col-12 col-sm-6 col-lg-4">
-            <q-select
+            <q-item
               dense
-              outlined
-              label="Difficulty"
-              v-model="chords.detail.difficulty"
-              :options="['Beginner', 'Intermediate', 'Advanced']"
-            ></q-select>
-          </div>
-
-          <div class="col-12 col-sm-6 col-lg-4">
-            <q-select
-              dense
-              outlined
-              map-options
-              emit-value
-              disable
-              label="Song"
-              v-model="chords.detail.song"
-              option-value="_id"
-              option-label="title"
-              :options="[songs.detail]"
+              class="text-grey-8"
+              tag="label"
+              style="height: 40px; border: 1px solid #afafaf; border-radius: 4px; ;"
             >
-            </q-select>
-
+              <q-item-section>
+                <q-radio
+                  v-model="chords.detail.isDraft"
+                  :val="false"
+                  color="green"
+                  label="Publish"
+                  checked-icon="library_add_check"
+                  unchecked-icon="library_add_check"
+                ></q-radio>
+              </q-item-section>
+            </q-item>
           </div>
 
           <div class="col-12 col-sm-6 col-lg-4">
@@ -55,26 +54,33 @@
             </q-item>
           </div>
 
+
+
           <div class="col-12 col-sm-6 col-lg-4">
-            <q-item
+            <q-select
               dense
-              class="text-grey-8"
-              tag="label"
-              style="height: 40px; border: 1px solid #afafaf; border-radius: 4px; ;"
-            >
-              <q-item-section>
-                <q-radio
-                  v-model="chords.detail.isDraft"
-                  :val="false"
-                  color="green"
-                  label="Publish"
-                  checked-icon="library_add_check"
-                  unchecked-icon="library_add_check"
-                ></q-radio>
-              </q-item-section>
-            </q-item>
+              outlined
+              label="Difficulty"
+              v-model="chords.detail.difficulty"
+              :options="['Beginner', 'Intermediate', 'Advanced']"
+            ></q-select>
           </div>
 
+          <!-- <div class="col-12 col-sm-6 col-lg-4">
+            <q-select
+              dense
+              outlined
+              map-options
+              emit-value
+              disable
+              label="Song"
+              v-model="chords.detail.song"
+              option-value="_id"
+              option-label="title"
+              :options="[songs.detail]"
+            >
+            </q-select>
+          </div> -->
         </div>
 
         <div class="q-mt-md">
