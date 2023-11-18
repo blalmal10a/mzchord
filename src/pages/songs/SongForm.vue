@@ -14,6 +14,13 @@
           v-model="songs.detail.title"
           :rules="[val => !!val || 'Title of the song is required']"
         ></q-input>
+        <q-input
+          label="Thumbnail image url"
+          outlined
+          dense
+          v-model="songs.thumbnail"
+          hint=""
+        ></q-input>
         <q-select
           dense
           outlined
