@@ -3,22 +3,30 @@
     class=""
     padding
   >
-    <!-- <q-card
-      flat
-      bordered
-      class="q-pa-xl"
-    > -->
+
 
     <div
       class="row q-col-gutter-md text-center"
       style="font-size: min(15vw, 15vh);"
     >
-
+      <div class="col-12 col-sm-6 col-lg-4 ">
+        <q-card>
+          <q-card-section class="q-py-none">
+            {{ statisticData.totalPublishedChords ?? 0 }}
+          </q-card-section>
+          <q-card-section
+            style="font-size: min(10vw,10vh);"
+            class="q-py-none"
+          >
+            CHORDS
+          </q-card-section>
+        </q-card>
+      </div>
 
       <div class="col-12 col-sm-6 col-lg-4 ">
         <q-card>
           <q-card-section class="q-py-none">
-            {{ songs.pagination.rowsNumber }}
+            {{ statisticData.totalSongs ?? 0 }}
           </q-card-section>
           <q-card-section
             style="font-size: min(10vw,10vh);"
@@ -31,7 +39,7 @@
       <div class="col-12 col-sm-6 col-lg-4 ">
         <q-card>
           <q-card-section class="q-py-none">
-            {{ artists.pagination.rowsNumber }}
+            {{ statisticData.totalArtists ?? 0 }}
           </q-card-section>
           <q-card-section
             style="font-size: min(10vw,10vh);"
@@ -45,7 +53,7 @@
       <div class="col-12 col-sm-6 col-lg-4 ">
         <q-card>
           <q-card-section class="q-py-none">
-            {{ users.pagination.rowsNumber }}
+            {{ statisticData.totalUsers ?? 0 }}
           </q-card-section>
           <q-card-section
             style="font-size: min(10vw,10vh);"
@@ -59,7 +67,9 @@
 
 
     <!-- </q-card> -->
-
+    <pre>
+  {{ statisticData }}
+</pre>
   </q-page>
 </template>
 
@@ -69,13 +79,22 @@ import artists from 'src/scripts/artists/artists';
 import chords from 'src/scripts/chords/chords';
 import songs from 'src/scripts/songs/songs';
 import users from 'src/scripts/users/users';
-import { onMounted } from 'vue';
-
+import { onMounted, ref } from 'vue';
+const statisticData = ref({})
 //
 onMounted(() => {
-  songs.getList();
-  artists.getList();
-  users.getList();
+  getStatistics();
+  // songs.getList();
+  // artists.getList();
+  // users.getList();
   // api.post('auth/logout')
-})
+});
+async function getStatistics() {
+  try {
+    const res = await api.get('dashboard')
+    statisticData.value = res.data
+  } catch (error) {
+    console.error(error.message);
+  }
+}
 </script>
