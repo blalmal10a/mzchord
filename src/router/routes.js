@@ -39,6 +39,7 @@ const routes = [
         meta: {
           title: "Songs Form",
           hidden: true,
+          activee: "songs",
           ancestors: [
             {
               name: "songs",
