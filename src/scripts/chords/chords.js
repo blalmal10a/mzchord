@@ -3,7 +3,7 @@ import { reactive } from "vue";
 import v from "../v";
 import { Notify } from "quasar";
 
-const BASEPATH = "chord";
+const BASEPATH = "chords";
 const chords = reactive({
   list: [],
   detail: {

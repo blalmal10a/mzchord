@@ -2,7 +2,7 @@ import { api } from "src/boot/axios";
 import { reactive } from "vue";
 import v from "../v";
 
-const BASEPATH = "user";
+const BASEPATH = "users";
 const users = reactive({
   list: [],
   detail: {

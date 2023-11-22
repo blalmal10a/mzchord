@@ -3,7 +3,7 @@ import { reactive } from "vue";
 import v from "../v";
 import { Notify } from "quasar";
 
-const BASEPATH = "artist";
+const BASEPATH = "artists";
 const artists = reactive({
   list: [],
   detail: {

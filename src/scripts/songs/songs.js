@@ -3,7 +3,7 @@ import { reactive } from "vue";
 import v from "../v";
 import artists from "../artists/artists";
 
-const BASEPATH = "song";
+const BASEPATH = "songs";
 const songs = reactive({
   list: [],
   detail: {
