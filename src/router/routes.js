@@ -25,6 +25,63 @@ const routes = [
         },
         component: () => import("pages/dashboard/DashboardPage.vue"),
       },
+
+      //ARTISTS
+
+      //ARTISTS
+      {
+        path: "artists",
+        name: "artists",
+        meta: {
+          title: "Artists",
+        },
+        component: () => import("pages/artists/ListPage.vue"),
+      },
+      {
+        path: "artist-form/:id",
+        name: "artist-form",
+        meta: {
+          title: "Artist Form",
+          hidden: true,
+          active: "artists",
+          ancestors: [
+            {
+              name: "artists",
+              title: "Artists",
+            },
+          ],
+        },
+        component: () => import("src/pages/artists/FormPage.vue"),
+      },
+
+      // ALBUMS
+
+      {
+        path: "albums",
+        name: "albums",
+        meta: {
+          title: "Albums",
+        },
+        component: () => import("pages/albums/ListPage.vue"),
+      },
+      {
+        path: "album-form/:id",
+        name: "album-form",
+        meta: {
+          title: "Album Form",
+          hidden: true,
+          active: "albums",
+          ancestors: [
+            {
+              name: "albums",
+              title: "Albums",
+            },
+          ],
+        },
+        component: () => import("src/pages/albums/FormPage.vue"),
+      },
+      //END ALBUM
+      // SONGS
       {
         path: "songs",
         name: "songs",
@@ -58,41 +115,6 @@ const routes = [
         },
         component: () => import("pages/songs/SongForm.vue"),
       },
-      //ARTISTS
-
-      {
-        path: "artists",
-        name: "artists",
-        meta: {
-          title: "Artists",
-        },
-        component: () => import("pages/artists/ListPage.vue"),
-      },
-      {
-        path: "artist-form/:id",
-        name: "artist-form",
-        meta: {
-          title: "Artist Form",
-          hidden: true,
-          active: "artists",
-          ancestors: [
-            {
-              name: "artists",
-              title: "Artists",
-            },
-          ],
-        },
-        component: () => import("src/pages/artists/FormPage.vue"),
-      },
-      // {
-      //   path: "artist-detail/:id",
-      //   name: "artist-detail",
-      //   meta: {
-      //     title: "Artists",
-      //     hidden: true,
-      //   },
-      //   component: () => import("pages/artists/FormPage.vue"),
-      // },
 
       //CHORDs
 
