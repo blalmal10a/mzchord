@@ -1,7 +1,6 @@
 <template>
   <q-page padding>
     <q-form @submit="songs.onSubmit">
-
       <q-card
         flat
         bordered
@@ -18,7 +17,7 @@
           label="Thumbnail image url"
           outlined
           dense
-          v-model="songs.thumbnail"
+          v-model="songs.detail.thumbnail"
           hint=""
         ></q-input>
         <q-select
@@ -61,12 +60,12 @@
         />
       </q-card>
       <div
-        class="q-mt-md"
+        class="q-mt-md bg-white"
         style="position: sticky;bottom: 0;"
       >
         <q-separator></q-separator>
 
-        <div class="row justify-end q-mt-md q-col-gutter-sm">
+        <div class="row justify-end q-mt-md q-pb-md q-col-gutter-sm">
           <div class="col-auto">
             <q-btn
               outline

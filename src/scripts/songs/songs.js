@@ -88,8 +88,8 @@ async function getDetail(ev, id) {
   try {
     q.loading.show();
     const res = await api.get(`${BASEPATH}/${id ?? route.params.id}`);
-    songs.detail = res.data?.song;
-    songs.other_details = res.data;
+    songs.detail = res.data;
+    // songs.other_details = res.data;
     q.loading.hide();
   } catch (error) {
     q.loading.hide();
