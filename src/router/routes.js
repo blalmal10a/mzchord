@@ -39,7 +39,7 @@ const routes = [
         meta: {
           title: "Songs Form",
           hidden: true,
-          activee: "songs",
+          active: "songs",
           ancestors: [
             {
               name: "songs",
@@ -74,6 +74,7 @@ const routes = [
         meta: {
           title: "Artist Form",
           hidden: true,
+          active: "artists",
           ancestors: [
             {
               name: "artists",
@@ -151,6 +152,7 @@ const routes = [
         meta: {
           title: "User form",
           hidden: true,
+          active: "users",
           ancestors: [
             {
               name: "users",
