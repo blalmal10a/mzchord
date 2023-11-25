@@ -50,6 +50,21 @@
           label="Featuring artists"
           hint=""
         ></q-select>
+
+        <q-select
+          dense
+          outlined
+          use-input
+          :options="albums.list"
+          v-model="songs.detail.album"
+          map-options
+          emit-value
+          @filter="albums.onFilterAlbums"
+          option-label="title"
+          option-value="_id"
+          label="Album"
+          hint=""
+        ></q-select>
         <q-input
           outlined
           v-model="songs.detail.lyric"
@@ -93,6 +108,7 @@
   </q-page>
 </template>
 <script setup>
+import albums from 'src/scripts/albums/albums';
 import artists from 'src/scripts/artists/artists';
 import songs from 'src/scripts/songs/songs';
 import v from 'src/scripts/v';

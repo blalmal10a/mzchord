@@ -13,6 +13,7 @@ const songs = reactive({
     artist: null,
     featuring: null,
     lyric: "",
+    album: null,
   },
 
   pagination: {
