@@ -28,7 +28,8 @@
           v-model="songs.detail.artist"
           map-options
           emit-value
-          @filter="songs.search_artist"
+          clearable
+          @filter="artists.onFilterArtists"
           option-label="name"
           option-value="_id"
           label="Artist"
@@ -40,11 +41,12 @@
           outlined
           use-input
           multiple
-          :options="artists.list"
-          v-model="songs.detail.featuring"
           map-options
           emit-value
-          @filter="songs.search_artist"
+          use-chips
+          :options="artists.list"
+          v-model="songs.detail.featuring"
+          @filter="artists.onFilterArtists"
           option-label="name"
           option-value="_id"
           label="Featuring artists"

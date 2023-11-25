@@ -35,6 +35,7 @@ const artists = reactive({
   getList: getList,
   getDetail: getDetail,
   onSubmit: onSubmit,
+  onFilterArtists,
   columns: [
     {
       label: "Name",
@@ -116,4 +117,23 @@ async function getDetail() {
     q.loading.hide();
     Notify.create(error.response?.data?.message ?? "Server error");
   }
+}
+
+async function onFilterArtists(data, update) {
+  update(() => {
+    try {
+      if (data.length < 2) {
+        artists.getList();
+      } else {
+        artists.getList({
+          pagination: {
+            limit: 20,
+            search: data,
+          },
+        });
+      }
+    } catch (error) {
+      Notify.create(error.response?.data?.message ?? "Server error");
+    }
+  });
 }

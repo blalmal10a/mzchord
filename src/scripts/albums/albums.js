@@ -24,7 +24,6 @@ const albums = reactive({
   getDetail: getDetail,
   onSubmit: onSubmit,
   onFilterAlbums: onFilterAlbums,
-  search_artist: onFilterArtist,
   columns: [
     {
       label: "Title",
@@ -99,26 +98,6 @@ async function getDetail() {
   } catch (error) {
     q.loading.hide();
   }
-}
-
-async function onFilterArtist(data, update) {
-  update(() => {
-    try {
-      if (data.length < 2) {
-        artists.getList();
-      } else {
-        artists.getList({
-          pagination: {
-            limit: 20,
-            search: data,
-          },
-        });
-      }
-    } catch (error) {
-      console.log(error.message);
-      Notify.create(error.response?.data?.message ?? "Server error");
-    }
-  });
 }
 
 async function onFilterAlbums(data, update) {

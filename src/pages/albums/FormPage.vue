@@ -48,7 +48,7 @@
               v-model="albums.detail.artist"
               map-options
               emit-value
-              @filter="albums.search_artist"
+              @filter="artists.onFilterArtists"
               option-label="name"
               option-value="_id"
               label="Artist"

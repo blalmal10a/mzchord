@@ -24,7 +24,6 @@ const songs = reactive({
   getList: getList,
   getDetail: getDetail,
   onSubmit: onSubmit,
-  search_artist: onFilterArtist,
   columns: [
     {
       label: "Title",
