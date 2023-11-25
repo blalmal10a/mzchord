@@ -2,6 +2,7 @@ import { api } from "src/boot/axios";
 import { reactive } from "vue";
 import v from "../v";
 import artists from "../artists/artists";
+import { Notify } from "quasar";
 
 const BASEPATH = "songs";
 const songs = reactive({
