@@ -61,7 +61,7 @@ async function getList(props) {
 
       console.log(params);
     }
-    const res = await api.get(`song/${v.route.params.songId}/chord`, {
+    const res = await api.get(`songs/${v.route.params.songId}/chords`, {
       params,
     });
     chords.list = res.data.data;
