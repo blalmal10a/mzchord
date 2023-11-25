@@ -37,6 +37,12 @@ const albums = reactive({
       field: (row) => date.formatDate(row.releaseDate, "Do MMM, YYYY"),
       align: "left",
     },
+    {
+      label: "Artist",
+      name: "artist",
+      field: (row) => row.artist?.name,
+      align: "left",
+    },
 
     {
       name: "actions",
