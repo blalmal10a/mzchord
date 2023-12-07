@@ -1,0 +1,20 @@
+---
+import Layout from "../../src/layouts/Layout.astro"
+
+import Card from "../../src/components/Card.astro"
+import InputComponent from "../../src/components/InputComponent.vue"
+import RegistrationForm from "../../src/components/RegistrationForm.vue"
+---
+
+<Layout title="MZ CHORD | Register">
+	<div class="cs-dark row justify-content-center" style="min-height: 100vh;">
+		<div class="col-lg-6">
+			<section id="contact">
+				<div class="cs-height_70 cs-height_lg_40"></div>
+				<div class="container">
+					<RegistrationForm client:only />
+				</div>
+			</section>
+		</div>
+	</div>
+</Layout>

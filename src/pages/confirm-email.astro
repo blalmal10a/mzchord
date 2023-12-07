@@ -1,0 +1,16 @@
+---
+import Layout from "../../src/layouts/Layout.astro"
+
+import Card from "../../src/components/Card.astro"
+import InputComponent from "../../src/components/InputComponent.vue"
+import EmailConfirmStatus from "../../src/components/EmailConfirmStatus.vue"
+---
+
+<Layout title="asdf">
+	<div
+		class="cs-dark row align-items-center justify-content-center"
+		style="min-height: 100vh;"
+	>
+		<EmailConfirmStatus client:only />
+	</div>
+</Layout>
