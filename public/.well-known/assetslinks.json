@@ -1,14 +1,12 @@
 [
-    {
-        "relation": [
-            "delegate_permission/common.handle_all_urls"
-        ],
-        "target": {
-            "namespace": "android_app",
-            "package_name": "com.mzchord.app",
-            "sha256_cert_fingerprints": [
-                "BA:D0:BE:AA:1C:76:75:4D:1B:CA:7A:DD:5A:C3:9A:60:3B:B9:B4:38:7D:3A:91:16:D0:ED:DD:5E:ED:85:19:DE"
-            ]
-        }
-    }
+	{
+		"relation": ["delegate_permission/common.handle_all_urls"],
+		"target": {
+			"namespace": "android_app",
+			"package_name": "com.mzchord.app",
+			"sha256_cert_fingerprints": [
+				"B0:F4:9F:11:77:AE:BF:DC:6C:8B:F8:05:97:A6:38:D1:D1:4D:50:98:1A:51:6A:FD:E4:42:42:07:F2:A9:EA:E7"
+			]
+		}
+	}
 ]
