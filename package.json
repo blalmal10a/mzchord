@@ -1,17 +1,18 @@
 {
-  "name": "astro-mzchord",
-  "type": "module",
-  "version": "0.0.1",
-  "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "@astrojs/vue": "^3.0.3",
-    "astro": "^3.4.3",
-    "vue": "^3.2.30"
-  }
+	"name": "astro-mzchord",
+	"type": "module",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "astro dev",
+		"start": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview",
+		"astro": "astro",
+		"postbuild": "cd ../quasar-mzchord && quasar build && cd ../astro-mzchord && firebase deploy --only hosting"
+	},
+	"dependencies": {
+		"@astrojs/vue": "^3.0.3",
+		"astro": "^3.4.3",
+		"vue": "^3.2.30"
+	}
 }
