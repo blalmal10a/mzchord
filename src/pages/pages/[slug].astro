@@ -1,13 +1,8 @@
 ---
 import PageContent from "../../components/page_content/PageContent.vue"
-
+import pageData from "../../data/pages.json"
 export function getStaticPaths() {
-	return [
-		{params: {slug: "terms-and-conditions"}},
-		{params: {slug: "privacy-policy"}},
-		{params: {slug: "community-standards"}},
-		{params: {slug: "account-deletion"}},
-	]
+	return pageData
 }
 
 const {slug} = Astro.params

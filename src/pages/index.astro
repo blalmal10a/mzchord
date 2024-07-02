@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro"
+import pageData from "../data/pages.json"
 ---
 
 <Layout title="MZ CHORD">
@@ -35,8 +36,28 @@ import Layout from "../layouts/Layout.astro"
 
 								<li><a href="#faq" class="cs-smoth_scroll">FAQ</a></li>
 								<li>
-									<a href="#support" class="cs-smoth_scroll">Support</a>
+									<a href="#important" class="cs-smoth_scroll">Pages</a>
 								</li>
+
+								<!-- {
+									pageData.map((e) => (
+										<li>
+											<a
+												href={`/pages/${e.params.slug}`}
+												class="cs-smoth_scroll"
+											>
+												{e.params?.label}
+											</a>
+										</li>
+									))
+								} -->
+								<!-- {pageData.forEach((e) => e.params?.label)} -->
+								<!-- <li>
+									<a href="#support" class="cs-smoth_scroll">Support</a>
+								</li> -->
+								<!-- <li>
+									<a href="#support" class="cs-smoth_scroll">Support</a>
+								</li> -->
 							</ul>
 						</div>
 					</div>
@@ -263,7 +284,7 @@ import Layout from "../layouts/Layout.astro"
 	<!-- End Goals -->
 
 	<!-- Start FAQ -->
-	<section id="faq">
+	<section id="faq" style="padding-bottom: 100px">
 		<div class="cs-height_95 cs-height_lg_65"></div>
 		<div class="container">
 			<div
@@ -323,8 +344,8 @@ import Layout from "../layouts/Layout.astro"
 						</div>
 						<div class="cs-accordian-body">
 							Mahnia hla dah luh dawn chuan <a href="">Website</a>-ah in lut
-							anga, <a href="">HLA DAH BELHNA</a> form atangin dah belh theih a
-							ni ang.
+							anga, <a href="">HLA DAH BELHNA</a> form atangin dah belh theih a ni
+							ang.
 						</div>
 					</div>
 					<!-- .cs-accordian -->
@@ -347,6 +368,31 @@ import Layout from "../layouts/Layout.astro"
 					<div class="cs-height_25 cs-height_lg_25"></div>
 				</div>
 			</div>
+		</div>
+	</section>
+	<section id="important" style="padding-bottom: 100px">
+		<div
+			class="cs-seciton_heading cs-style1 text-center wow fadeInUp"
+			data-wow-duration="1s"
+			data-wow-delay="0.35s"
+		>
+			<h3 class="cs-section_title cs-font_16 cs-font_14_sm cs-gradient_color">
+				Important links
+			</h3>
+
+			<!-- <div style="max-width: 250px; margin: auto; "> -->
+			<ul class="cs-nav_list" style="list-style-type: none">
+				{
+					pageData.map((e) => (
+						<li>
+							<a href={`/pages/${e.params.slug}`} class="cs-smoth_scroll">
+								{e.params?.label}
+							</a>
+						</li>
+					))
+				}
+			</ul>
+			<!-- </div> -->
 		</div>
 	</section>
 
@@ -490,6 +536,5 @@ import Layout from "../layouts/Layout.astro"
 				<span class="cs-primary_font cs-primary_color">MZ CHORD</span>
 			</div>
 		</div>
-		<div class="cs-height_25 cs-height_lg_25"></div>
 	</footer>
 </Layout>
