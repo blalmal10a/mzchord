@@ -3253,8 +3253,8 @@ ul.cs-list.cs-style2 li:not(:last-child) {
 	top: 23%;
 	right: 0;
 	z-index: 1;
-	-webkit-animation: rotate360 30s linear infinite;
-	animation: rotate360 30s linear infinite;
+	/* -webkit-animation: rotate360 30s linear infinite;
+	animation: rotate360 30s linear infinite; */
 }
 
 .cs-hero.cs-style1 .cs-hero_title {
